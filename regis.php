@@ -8,11 +8,12 @@
 </head>
 <body>
     <div class="login">
-            <h2 class="header">Form LOGIN</h2>
-        <form class="login-container" action="actionLogin.php" method="post">
+            <h2 class="header">Form Registrasi</h2>
+        <form class="login-container" action="actionRegis.php" method="post">
             <p> <input type="email" placeholder="email" name="email"></p>
             <p> <input type="password" placeholder="password" name="password"></p>
-            <p><input type="submit" value="login"></p>
+            <p> <input type="text" placeholder="username" name="username"></p>
+            <p><input type="submit" value="Regis" ></p>
         </form>
     </div>
 </body>
