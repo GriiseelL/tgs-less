@@ -11,12 +11,14 @@ if ($inputEmail==$email) {
     }
 
     else {
-        echo "password salah";
+        // echo "password salah";
+            echo "<script type='text/javascript'>alert('Password salah');</script>";
     }
 }
 
 else {
-    echo "input salah";
+    // echo "input salah";
+        echo "<script type='text/javascript'>alert('input salah');</script>";
 }
 
 

@@ -12,7 +12,7 @@
         <form class="login-container" action="actionLogin.php" method="post">
             <p> <input type="email" placeholder="email" name="email"></p>
             <p> <input type="password" placeholder="password" name="password"></p>
-            <p><input type="submit" value="login"></p>
+            <p><input type="submit" value="login" onclick="myFunction()"></p>
         </form>
     </div>
 </body>
