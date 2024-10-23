@@ -19,6 +19,7 @@ $result = $conn->query($sql);
     echo "0 results";
   }
   $conn->close();
+
 ?>
 
   <!DOCTYPE html>

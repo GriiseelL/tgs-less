@@ -1,3 +1,12 @@
+<?php
+    
+    session_start();
+    if (!isset($_SESSION['email'])) {
+        header("Location: web.php"); // Redirect to your login page
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

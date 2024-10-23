@@ -11,11 +11,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 
+
   $inputEmail = $_POST["email"];
   $inputPassword = $_POST["password"];
 
   $sql = "SELECT*FROM users WHERE email='$inputEmail'";
-$result = $conn->query($sql);
+  $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
     // output data of each row
@@ -53,8 +54,12 @@ $result = $conn->query($sql);
 // $email = "grizelda@gmail.com";
 // $password = "020608";
 
+    session_start();
+
 if ($inputEmail==$email) {
     if ($inputPassword==$password) {
+        session_start();
+        $_SESSION['email'] = $inputEmail;
         header ("Location: product.php");
     }
 
