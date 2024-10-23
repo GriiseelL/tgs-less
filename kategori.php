@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['user'])) {
+        header("Location: web.php"); // Redirect to your login page
+        exit();
+    }
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -29,6 +36,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="produk.css">
+    <link rel="stylesheet" href="kategori.css">
 </head>
 <body>
     <div class="sidebar">
@@ -36,6 +44,7 @@ $result = $conn->query($sql);
         <div><a href="product.php">Product</div></a>
         <div> <a href="kategori.php">category></a></div>
     </div>
+  <button style="margin-left: 190px">add</button>
 <div class="table-container">
     <table border="1" class="tabel">
     <tr>

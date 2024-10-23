@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -10,7 +12,6 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-
 
   $inputEmail = $_POST["email"];
   $inputPassword = $_POST["password"];
@@ -23,6 +24,7 @@ if ($conn->connect_error) {
     $row = $result->fetch_assoc();
     if ($inputEmail==$row['email']) {
         if ($inputPassword==$row['password']) {
+            $_SESSION["user"] = $row;
             header ("Location: product.php");
         }
     
@@ -45,7 +47,10 @@ if ($conn->connect_error) {
     }
     
   } else {
-    echo "0 results";
+    echo "<script type='text/javascript'>
+    alert('akun tidak tersedia');
+     window.location.href='web.php';
+    </script>";
   }
   $conn->close();
 //   return;
@@ -53,33 +58,6 @@ if ($conn->connect_error) {
 
 // $email = "grizelda@gmail.com";
 // $password = "020608";
-
-    session_start();
-
-if ($inputEmail==$email) {
-    if ($inputPassword==$password) {
-        session_start();
-        $_SESSION['email'] = $inputEmail;
-        header ("Location: product.php");
-    }
-
-    else {
-        // echo "password salah";
-            echo "<script type='text/javascript'>
-            alert('Password salah');
-            window.location.href='web.php';
-            </script>";
-            // header ("Location: web.php");
-    }
-}
-
-else {
-    // echo "input salah";
-        echo "<script type='text/javascript'>
-        alert('input salah');
-         window.location.href='web.php';
-        </script>";
-}
 
 
 // echo $email;

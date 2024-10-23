@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+    header("Location: product.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +20,7 @@
             <p> <input type="email" placeholder="email" name="email"></p>
             <p> <input type="password" placeholder="password" name="password"></p>
             <p><input type="submit" value="login"></p>
+            <p><a href="regis.php">buat akun</a></p>
         </form>
     </div>
 </body>

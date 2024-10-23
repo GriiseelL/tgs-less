@@ -1,10 +1,35 @@
 <?php
     
     session_start();
-    if (!isset($_SESSION['email'])) {
+    // session_unset();
+    // session_destroy();
+    // var_dump($_SESSION);
+    // return;
+    if (!isset($_SESSION['user'])) {
         header("Location: web.php"); // Redirect to your login page
         exit();
     }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "web1";
+    
+    $conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT*FROM product";
+$result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+  } else {
+    echo "0 results";
+  }
+  $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +45,7 @@
         <h2 class="kata">Web</h2>
         <div><a href="product.php">Product</a></div>
         <div> <a href="kategori.php">category</a></div>
+        <div> <a href="action-logout.php">logout</a></div>
   <!-- body content -->
     </div>
 <div class="table-container">
@@ -31,20 +57,17 @@
     </tr>
 
 <?php
-   for($loop = 1; $loop <= 100; $loop++) {
-    // echo "<tr>";
-    // echo "<td>$loop</td>";
-    // echo "<td>Sabun</td>";
-    // echo "<td>Alat mandi</td>";
-    // echo "</tr>";
+while ($row = $result->fetch_assoc()) {
+
 ?>
     <tr>
-        <td> <?php echo $loop?></td>
-        <td>Sabun</td>
-        <td>Alat mandi</td>
+        <td> <?php echo $row["product_id"]?></td>
+        <td> <?php echo $row["product_name"]?></td>
+        <!-- <td>Sabun</td> -->
+        <!-- <td>Alat mandi</td> -->
     </tr>
 <?php
-   }
+}
 ?>
 </table>
 </div>
