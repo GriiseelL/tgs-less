@@ -53,7 +53,7 @@ $result = $conn->query($sql);
     <tr>
         <td>No</td>
         <td>Nama produk</td>
-        <td>kategori</td>
+        <!-- <td>kategori</td> -->
     </tr>
 
 <?php

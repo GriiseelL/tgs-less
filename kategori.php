@@ -42,11 +42,11 @@ $result = $conn->query($sql);
     <div class="sidebar">
         <h2 class="kata">Web</h2>
         <div><a href="product.php">Product</div></a>
-        <div> <a href="kategori.php">category></a></div>
+        <div> <a href="kategori.php">category</a></div>
     </div>
-  <button style="margin-left: 190px">add</button>
+   <br><button style="margin-left: 190px">add</button>
 <div class="table-container">
-    <table border="1" class="tabel">
+    <br><table border="1" class="tabel">
     <tr>
         <td>No</td>
         <td>kategori</td>

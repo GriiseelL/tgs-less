@@ -15,9 +15,10 @@
         <div> <a href="action-logout.php">logout</a></div>
   <!-- body content -->
     </div>
-    <form action="">
-        <a style="margin-left: 190px">Name kategori</a>
+    <form action="" style="align-items: ;">
+        <a style="margin-left: 190px;">Name kategori</a>
         <input type="text" placeholder="tambahkan kategori" style="margin-left: 0px">
+        <input type="submit">
     </form>
 </body>
 </html>
