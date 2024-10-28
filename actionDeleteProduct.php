@@ -1,24 +1,24 @@
 <?php
+$_GET["id_product"];
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "web1";
-// Create connection
+$servername="localhost";
+$username="root";
+$password="";
+$database="web1";
 $conn = new mysqli($servername, $username, $password, $database );
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $inputKategori = $_POST["kategori"];
+  $id_product = $_GET["id_product"];
 
-  $sql = "INSERT INTO categories (category_name)
-  VALUES ('$inputKategori')";
+  $sql = "DELETE FROM product WHERE product_id='$id_product'";
+
   
   if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
-    header ("Location: kategori.php");
+    header ("Location: product.php");
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -26,4 +26,4 @@ if ($conn->connect_error) {
   $conn->close();
 
 
-echo $inputKategori;
+// echo $id_category;

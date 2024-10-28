@@ -48,6 +48,7 @@ $result = $conn->query($sql);
         <div> <a href="action-logout.php">logout</a></div>
   <!-- body content -->
     </div>
+    <br> <a href="addProduct.php"><button style="margin-left: 190px; margin-bottom: 20px">add</button></a> <br>
 <div class="table-container">
     <table border="1" class="tabel">
     <tr>
@@ -58,11 +59,15 @@ $result = $conn->query($sql);
 
 <?php
 while ($row = $result->fetch_assoc()) {
-
+  $product= $row["product_id"] 
 ?>
     <tr>
         <td> <?php echo $row["product_id"]?></td>
         <td> <?php echo $row["product_name"]?></td>
+        <td>
+        <a href="editProduct.php?id_product=<?php echo $product?>">Edit</a>
+        <a href="actionDeleteProduct.php?id_product=<?php echo $product?> " onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
         <!-- <td>Sabun</td> -->
         <!-- <td>Alat mandi</td> -->
     </tr>

@@ -44,22 +44,29 @@ $result = $conn->query($sql);
         <div><a href="product.php">Product</div></a>
         <div> <a href="kategori.php">category</a></div>
     </div>
-   <br><button style="margin-left: 190px">add</button>
+   <br> <a href="addKategori.php"><button style="margin-left: 190px">add</button></a>
 <div class="table-container">
     <br><table border="1" class="tabel">
     <tr>
         <td>No</td>
         <td>kategori</td>
+        <td>action</td>
     </tr>
 
 <?php 
 while($row = $result->fetch_assoc()) {
     // echo "id: " . $row["category_id"]. " - Name: " . $row["category_name"]."<br>";
+
+    $kategori= $row["category_id"] 
 ?>
 
     <tr>
         <td><?php echo $row["category_id"] ?></td>
         <td><?php echo $row["category_name"]?></td>
+        <td>
+          <a href="editKategori.php?id_category=<?php echo $kategori?>">Edit</a>
+        <a href="actionDelete.php?id_category=<?php echo $kategori?> " onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
     </tr>
 <?php
 }
