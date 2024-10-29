@@ -21,8 +21,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT*FROM product";
+  $sql = "SELECT product.product_id, product.product_name, categories.category_name, color.color_name FROM product
+LEFT JOIN categories ON product.category_id=categories.category_id 
+LEFT JOIN color ON product.color_id=color.color_id;" ;
 $result = $conn->query($sql);
+
   
   if ($result->num_rows > 0) {
     // output data of each row
@@ -55,6 +58,9 @@ $result = $conn->query($sql);
         <td>No</td>
         <td>Nama produk</td>
         <!-- <td>kategori</td> -->
+        <td>aksi</td>
+        <td>category</td>
+        <td>color</td>
     </tr>
 
 <?php
@@ -68,6 +74,8 @@ while ($row = $result->fetch_assoc()) {
         <a href="editProduct.php?id_product=<?php echo $product?>">Edit</a>
         <a href="actionDeleteProduct.php?id_product=<?php echo $product?> " onclick="return confirm('Are you sure?')">Delete</a>
       </td>
+      <td> <?php echo $row["category_name"] ?> </td>
+      <td><?php echo $row["color_name"]?></td>
         <!-- <td>Sabun</td> -->
         <!-- <td>Alat mandi</td> -->
     </tr>

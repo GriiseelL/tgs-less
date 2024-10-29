@@ -1,3 +1,34 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+        header("Location: web.php"); // Redirect to your login page
+        exit();
+    }
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "web1";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT*FROM categories";
+  $sq = "SELECT*FROM color";
+$result = $conn->query($sql);
+$res = $conn->query($sq);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+  } else {
+    echo "0 results";
+  }
+  $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +50,23 @@
         <a style="margin-left: 190px;">Name product</a>
         <input type="text" placeholder="tambahkan product" name="product">
         <input type="submit" value="add">
+        <select name="dropdown" id="">
+        <?php 
+    while($row = $result->fetch_assoc()) {
+    // echo "id: " . $row["category_id"]. " - Name: " . $row["category_name"]."<br>";
+
+?>
+            <option value="<?php echo $row["category_id"]?>"><?php echo $row["category_name"]?></option>
+<?php } ?> 
+</select>
+        <select name="dropdown" id="">
+        <?php 
+    while($row = $res->fetch_assoc()) {
+    // echo "id: " . $row["category_id"]. " - Name: " . $row["category_name"]."<br>";
+?>
+      <option value="<?php echo $row["color_id"]?>"><?php echo $row["color_name"]?></option>
+<?php } ?>
+    </select>
     </form>
 </body>
 </html>
