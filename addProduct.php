@@ -48,9 +48,9 @@ $res = $conn->query($sq);
     </div>
     <form action="actionProduct.php" method="post">
         <a style="margin-left: 190px;">Name product</a>
-        <input type="text" placeholder="tambahkan product" name="product">
-        <input type="submit" value="add">
-        <select name="dropdown" id="">
+        <input type="text" placeholder="tambahkan product" name="product"> <br>
+        <a style="margin-left: 190px;">Name kategori</a>
+        <select name="dropdown" id="" style="margin-top: 20px">
         <?php 
     while($row = $result->fetch_assoc()) {
     // echo "id: " . $row["category_id"]. " - Name: " . $row["category_name"]."<br>";
@@ -58,15 +58,17 @@ $res = $conn->query($sq);
 ?>
             <option value="<?php echo $row["category_id"]?>"><?php echo $row["category_name"]?></option>
 <?php } ?> 
-</select>
-        <select name="dropdown" id="">
+</select> <br>
+        <a style="margin-left: 190px;">Name product</a>
+        <select name="dropdown" id="" style="margin-top: 20px">
         <?php 
     while($row = $res->fetch_assoc()) {
     // echo "id: " . $row["category_id"]. " - Name: " . $row["category_name"]."<br>";
 ?>
       <option value="<?php echo $row["color_id"]?>"><?php echo $row["color_name"]?></option>
 <?php } ?>
-    </select>
+    </select><br>   
+        <input type="submit" value="add" style="margin-left: 195px; margin-top: 20px">
     </form>
 </body>
 </html>
